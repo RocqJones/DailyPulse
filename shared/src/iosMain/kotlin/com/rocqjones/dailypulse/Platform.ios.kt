@@ -16,7 +16,7 @@ actual class Platform {
 
     actual fun logSystemInfo() {
         NSLog(
-            "iOS: $osName, $osVersion, $deviceModel, $density"
+            "iOSPlatform: $osName, $osVersion, $deviceModel, $density"
         )
     }
 }
