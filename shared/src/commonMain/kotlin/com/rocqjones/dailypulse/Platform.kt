@@ -1,7 +1,10 @@
 package com.rocqjones.dailypulse
 
 interface Platform {
-    val name: String
+    val osName: String
+    val osVersion: String
+    val deviceModel: String
+    val density: Int
 }
 
-expect fun getPlatform(): Platform
+expect fun logSystemInfo(): Platform
