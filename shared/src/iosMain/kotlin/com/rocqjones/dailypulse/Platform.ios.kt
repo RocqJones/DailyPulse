@@ -1,17 +1,22 @@
 package com.rocqjones.dailypulse
 
+import platform.Foundation.NSLog
 import platform.UIKit.UIDevice
 import platform.UIKit.UIScreen
 
-class IOSSystemInfo: Platform {
-    override val osName: String
+actual class Platform {
+    actual val osName: String
         get() = UIDevice.currentDevice.systemName
-    override val osVersion: String
+    actual val osVersion: String
         get() = UIDevice.currentDevice.systemVersion
-    override val deviceModel: String
+    actual val deviceModel: String
         get() = UIDevice.currentDevice.model
-    override val density: Int
+    actual val density: Int
         get() = UIScreen.mainScreen.scale.toInt()
-}
 
-actual fun logSystemInfo(): Platform = IOSSystemInfo()
+    actual fun logSystemInfo() {
+        NSLog(
+            "iOS: $osName, $osVersion, $deviceModel, $density"
+        )
+    }
+}
