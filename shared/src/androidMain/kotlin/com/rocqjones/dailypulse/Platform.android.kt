@@ -18,6 +18,6 @@ actual class Platform() {
         get() = round(Resources.getSystem().displayMetrics.density).toInt()
 
     actual fun logSystemInfo() {
-        Log.d(myTag, "Android: $osName, $osVersion, $deviceModel, $density")
+        Log.d(myTag, "AndroidPlatform: $osName, $osVersion, $deviceModel, $density")
     }
 }
