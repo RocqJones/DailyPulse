@@ -12,3 +12,7 @@ Demonstrates KMP 101
 ### MVI - Architecture
 ![image](https://github.com/RocqJones/DailyPulse/assets/32324500/42a521be-b442-4aa2-ba9b-51ce7b8cab9b)
 
+### Coroutines & Structured Concurrency recap.
+- `suspend` keyword in the Kt function makes the IO (Input/Output) thread suspended until we get results.
+- suspend functions can only be called from a Coroutine.
+- For a coroutine to exist we must have a **scope** and when its scope is canceled it cancels every work within the coroutine. It's good for memory management and avoiding memory leaks.
