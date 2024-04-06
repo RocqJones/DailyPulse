@@ -16,3 +16,4 @@ Demonstrates KMP 101
 - `suspend` keyword in the Kt function makes the IO (Input/Output) thread suspended until we get results.
 - suspend functions can only be called from a Coroutine.
 - For a coroutine to exist we must have a **scope** and when its scope is canceled it cancels every work within the coroutine. It's good for memory management and avoiding memory leaks.
+![image](https://github.com/RocqJones/DailyPulse/assets/32324500/d7d96968-d0c4-4532-bb8e-ffc9a61f9031)
