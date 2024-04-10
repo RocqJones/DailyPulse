@@ -1,5 +1,5 @@
 # DailyPulse - Android & iOS App
-Demonstrates KMP 101
+Demonstrates KMP
 
 ## Clean Architecture
 - Framework/ UI (Native iOS & Android)
