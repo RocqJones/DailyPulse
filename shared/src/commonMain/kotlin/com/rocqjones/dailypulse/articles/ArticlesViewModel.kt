@@ -28,19 +28,19 @@ class ArticlesViewModel : BaseViewModel() {
 
     private fun getArticles() {
         scope.launch {
+            delay(3000) // represents network delay
+
+            _articlesState.emit(ArticleStateModel(error = "Something went wrong!"))
+
+            delay(3000)
+
             val fetchedArticles = fetchArticles()
 
-            delay(500) // represents network delay
-
-            _articlesState.emit(
-                ArticleStateModel(
-                    articles = fetchedArticles
-                )
-            )
+            _articlesState.emit(ArticleStateModel(articles = fetchedArticles))
         }
     }
 
-    suspend fun fetchArticles() : List<ArticleModel> = mockArticle
+    private suspend fun fetchArticles() : List<ArticleModel> = mockArticle
 
     private val mockArticle = listOf(
         ArticleModel(
