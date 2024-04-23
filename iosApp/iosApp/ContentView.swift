@@ -4,7 +4,8 @@ import shared
 struct ContentView: View {
 
 	var body: some View {
-		AboutScreen()
+		//AboutScreen()
+        ArticlesScreen(viewModel: .init())
 	}
 }
 
