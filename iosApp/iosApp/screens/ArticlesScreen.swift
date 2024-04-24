@@ -17,15 +17,19 @@ extension ArticlesScreen {
         
         init() {
             articlesViewModel = ArticlesViewModel()
-            articleStateModel = articlesViewModel.articlesState.value
+            articleState = articlesViewModel.articlesState.value as! ArticleStateModel
         }
         
-        @Published var articleStateModel : ArticleStateModel
+        @Published var articleState : ArticleStateModel
         
         func startObserving() {
             Task {
-                for await articlesS in articlesViewModel.articlesState {
-                    self.articleStateModel = articlesS
+//                for await newState in articlesViewModel.articlesState {
+//                    self.articleState = newState as! ArticleStateModel
+//                }
+                while true {
+                    // Infinite loop to continuously receive updates
+                    self.articleState = articlesViewModel.articlesState.value as! ArticleStateModel
                 }
             }
         }
@@ -40,20 +44,20 @@ struct ArticlesScreen: View {
         VStack {
             AppBar()
             
-            if viewModel.articleStateModel.loading {
+            if viewModel.articleState.loading {
                 Loader()
             }
             
-            if let error = viewModel.articleStateModel.error {
+            if let error = viewModel.articleState.error {
                 ErrorMessage(message: error)
             }
             
-            if (!viewModel.articleStateModel.articles.isEmpty) {
+            if !viewModel.articleState.articles.isEmpty {
                 ScrollView {
                     // Lazy Vertical Stack
                     LazyVStack(spacing: 10) {
-                        ForEach(viewModel.articleStateModel.articles, id: \.self) { article in
-                            ArticleItemView(articleModel: article)
+                        ForEach(viewModel.articleState.articles, id: \.self) { articles in
+                            ArticleItemView(article: articles)
                         }
                     }
                 }
@@ -85,14 +89,14 @@ struct ErrorMessage: View {
 }
 
 struct ArticleItemView: View {
-    var articleModel: ArticleModel
+    var article: ArticleModel
     
     var body: some View {
         VStack(
             alignment: .leading,
             spacing: 8
         ) {
-            AsyncImage(url: URL(string: articleModel.imageUrl)) { phase in
+            AsyncImage(url: URL(string: article.imageUrl)) { phase in
                 if phase.image != nil {
                     phase.image!.resizable().aspectRatio(contentMode: .fit)
                 } else if phase.error != nil {
@@ -102,12 +106,9 @@ struct ArticleItemView: View {
                 }
             }
             
-            Text(articleModel.title).font(.title).fontWeight(.bold)
-            Text(articleModel.desc).font(.body).fontWeight(.medium)
-            Text(articleModel.date).frame(
-                maxWidth: .infinity,
-                alignment: .trailing
-            ).foregroundColor(.gray).fontWeight(.light)
+            Text(article.title).font(.title).fontWeight(.bold)
+            Text(article.desc).font(.body).fontWeight(.medium)
+            Text(article.date).frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(.gray).fontWeight(.light)
         }.padding(16)
     }
 }

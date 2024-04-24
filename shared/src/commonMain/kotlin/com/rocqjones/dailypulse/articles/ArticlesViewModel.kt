@@ -35,12 +35,11 @@ class ArticlesViewModel : BaseViewModel() {
             delay(3000)
 
             val fetchedArticles = fetchArticles()
-
             _articlesState.emit(ArticleStateModel(articles = fetchedArticles))
         }
     }
 
-    private suspend fun fetchArticles() : List<ArticleModel> = mockArticle
+    suspend fun fetchArticles() : List<ArticleModel> = mockArticle
 
     private val mockArticle = listOf(
         ArticleModel(
