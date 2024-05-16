@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("co.touchlab.skie") version "0.7.1"
+    /*
+    SKIE (pronounced as sky) is a special Kotlin native compiler plugin that brings back support for
+    some of these features by modifying the Xcode Framework produced by the Kotlin compiler.
+    */
 }
 
 kotlin {
@@ -25,10 +30,21 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            // put your multiplatform dependencies here
+            implementation(libs.kotlinx.coroutines.core)
         }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        androidMain.dependencies {
+            // Android dependencies here (only used in androidMain module)
+            implementation(libs.androidx.lifecycle.viewmodel.ktx)
+        }
+
+        iosMain.dependencies {
+            // iOS dependencies here (only used in iosMain module)
         }
     }
 }
