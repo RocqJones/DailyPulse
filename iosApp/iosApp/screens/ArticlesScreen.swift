@@ -14,24 +14,19 @@ extension ArticlesScreen {
     @MainActor
     class ArticlesViewModelWrapper: ObservableObject {
         
-        @Published var articleState : ArticleStateModel
-        
         let articlesViewModel: ArticlesViewModel
          
         init() {
             articlesViewModel = ArticlesViewModel()
-            articleState = articlesViewModel.articlesState.value as! ArticleStateModel
+            articleState = articlesViewModel.articlesState.value
         }
+        
+        @Published var articleState : ArticleStateModel
         
         func startObserving() {
             Task {
-//                for await articlesS in articlesViewModel.articlesState.collect() {
-//                    self.articleState = articlesS
-//                }
-                
-                while true {
-                    // Infinite loop to continuously receive updates
-                    self.articleState = articlesViewModel.articlesState.value as! ArticleStateModel
+                for await articlesS in articlesViewModel.articlesState {
+                    self.articleState = articlesS
                 }
             }
         }
@@ -102,7 +97,6 @@ struct ArticleItemView: View {
                 if let image = phase.image {
                     image.resizable().aspectRatio(contentMode: .fit)
                 } else if let error = phase.error {
-                    //print("Image loading error:", error.localizedDescription)
                     Text("Image Load Error!" + error.localizedDescription)
                 } else {
                     Text("Image Could not be loaded!")
