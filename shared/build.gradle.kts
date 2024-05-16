@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("co.touchlab.skie") version "0.7.1"
+    /*
+    SKIE (pronounced as sky) is a special Kotlin native compiler plugin that brings back support for
+    some of these features by modifying the Xcode Framework produced by the Kotlin compiler.
+    */
 }
 
 kotlin {
