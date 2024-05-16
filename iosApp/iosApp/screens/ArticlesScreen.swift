@@ -13,20 +13,22 @@ extension ArticlesScreen {
     
     @MainActor
     class ArticlesViewModelWrapper: ObservableObject {
-        let articlesViewModel: ArticlesViewModel
         
+        @Published var articleState : ArticleStateModel
+        
+        let articlesViewModel: ArticlesViewModel
+         
         init() {
             articlesViewModel = ArticlesViewModel()
             articleState = articlesViewModel.articlesState.value as! ArticleStateModel
         }
         
-        @Published var articleState : ArticleStateModel
-        
         func startObserving() {
             Task {
-//                for await newState in articlesViewModel.articlesState {
-//                    self.articleState = newState as! ArticleStateModel
+//                for await articlesS in articlesViewModel.articlesState.collect() {
+//                    self.articleState = articlesS
 //                }
+                
                 while true {
                     // Infinite loop to continuously receive updates
                     self.articleState = articlesViewModel.articlesState.value as! ArticleStateModel
@@ -52,7 +54,7 @@ struct ArticlesScreen: View {
                 ErrorMessage(message: error)
             }
             
-            if !viewModel.articleState.articles.isEmpty {
+            if (!viewModel.articleState.articles.isEmpty) {
                 ScrollView {
                     // Lazy Vertical Stack
                     LazyVStack(spacing: 10) {
@@ -81,7 +83,7 @@ struct Loader: View {
 }
 
 struct ErrorMessage: View {
-    var message: String
+    let message: String
     
     var body: some View {
         Text(message).font(.title)
@@ -89,7 +91,7 @@ struct ErrorMessage: View {
 }
 
 struct ArticleItemView: View {
-    var article: ArticleModel
+    let article: ArticleModel
     
     var body: some View {
         VStack(
@@ -97,12 +99,13 @@ struct ArticleItemView: View {
             spacing: 8
         ) {
             AsyncImage(url: URL(string: article.imageUrl)) { phase in
-                if phase.image != nil {
-                    phase.image!.resizable().aspectRatio(contentMode: .fit)
-                } else if phase.error != nil {
-                    Text("Image Load Error!")
+                if let image = phase.image {
+                    image.resizable().aspectRatio(contentMode: .fit)
+                } else if let error = phase.error {
+                    //print("Image loading error:", error.localizedDescription)
+                    Text("Image Load Error!" + error.localizedDescription)
                 } else {
-                    ProgressView()
+                    Text("Image Could not be loaded!")
                 }
             }
             
