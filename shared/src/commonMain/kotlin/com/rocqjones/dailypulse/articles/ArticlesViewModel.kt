@@ -28,11 +28,11 @@ class ArticlesViewModel : BaseViewModel() {
 
     private fun getArticles() {
         scope.launch {
-            delay(3000) // represents network delay
+            delay(2000) // represents network delay
 
             _articlesState.emit(ArticleStateModel(error = "Something went wrong!"))
 
-            delay(3000)
+            delay(2000)
 
             val fetchedArticles = fetchArticles()
             _articlesState.emit(ArticleStateModel(articles = fetchedArticles))

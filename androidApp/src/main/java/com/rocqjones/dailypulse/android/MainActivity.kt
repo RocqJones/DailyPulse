@@ -5,13 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.rocqjones.dailypulse.Platform
-import com.rocqjones.dailypulse.android.screens.AboutScreen
-import com.rocqjones.dailypulse.android.screens.ArticlesScreen
 import com.rocqjones.dailypulse.articles.ArticlesViewModel
 
 class MainActivity : ComponentActivity() {
@@ -31,13 +28,15 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                      //AboutScreen()
-                    ArticlesScreen(articlesViewModel = articlesViewModel)
+                    //ArticlesScreen(articlesViewModel = articlesViewModel)
+                    AppScaffold(articlesViewModel = articlesViewModel)
                 }
             }
         }
     }
 }
 
+/*
 @Preview
 @Composable
 fun DefaultPreview() {
@@ -45,3 +44,4 @@ fun DefaultPreview() {
         AboutScreen()
     }
 }
+*/
