@@ -6,6 +6,7 @@ plugins {
     SKIE (pronounced as sky) is a special Kotlin native compiler plugin that brings back support for
     some of these features by modifying the Xcode Framework produced by the Kotlin compiler.
     */
+    kotlin("plugin.serialization") version "1.9.20"
 }
 
 kotlin {
