@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daily Pulse</string>
+    <string name="about_device_button">About Device Button</string>
+    <string name="up_button">Up Button</string>
 </resources>
