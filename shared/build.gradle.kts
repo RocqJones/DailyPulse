@@ -44,10 +44,12 @@ kotlin {
         androidMain.dependencies {
             // Android dependencies here (only used in androidMain module)
             implementation(libs.androidx.lifecycle.viewmodel.ktx)
+            implementation(libs.ktor.client.android)
         }
 
         iosMain.dependencies {
             // iOS dependencies here (only used in iosMain module)
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
