@@ -6,6 +6,7 @@ plugins {
     SKIE (pronounced as sky) is a special Kotlin native compiler plugin that brings back support for
     some of these features by modifying the Xcode Framework produced by the Kotlin compiler.
     */
+    kotlin("plugin.serialization") version "1.9.20"
 }
 
 kotlin {
@@ -32,6 +33,10 @@ kotlin {
         commonMain.dependencies {
             // put your multiplatform dependencies here
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {
@@ -41,10 +46,12 @@ kotlin {
         androidMain.dependencies {
             // Android dependencies here (only used in androidMain module)
             implementation(libs.androidx.lifecycle.viewmodel.ktx)
+            implementation(libs.ktor.client.android)
         }
 
         iosMain.dependencies {
             // iOS dependencies here (only used in iosMain module)
+            implementation(libs.ktor.client.darwin)
         }
     }
 }

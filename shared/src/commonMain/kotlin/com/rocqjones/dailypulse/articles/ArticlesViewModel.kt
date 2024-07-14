@@ -1,10 +1,13 @@
 package com.rocqjones.dailypulse.articles
 
 import com.rocqjones.dailypulse.BaseViewModel
-import kotlinx.coroutines.delay
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 
 class ArticlesViewModel : BaseViewModel() {
 
@@ -22,26 +25,43 @@ class ArticlesViewModel : BaseViewModel() {
 
     val articlesState : StateFlow<ArticleStateModel> get() = _articlesState
 
+    private val useCase: ArticlesUseCase
+
     init {
+        val httpClient = HttpClient {
+            install(ContentNegotiation) {
+                json(
+                    Json {
+                        prettyPrint = true
+                        isLenient = true
+                        ignoreUnknownKeys = true
+                    }
+                )
+            }
+        }
+
+        val service = ArticlesService(httpClient)
+        useCase = ArticlesUseCase(service)
+
         getArticles()
     }
 
     private fun getArticles() {
         scope.launch {
-            delay(2000) // represents network delay
-
-            _articlesState.emit(ArticleStateModel(error = "Something went wrong!"))
-
-            delay(2000)
+//            delay(2000) // represents network delay
+//
+//            _articlesState.emit(ArticleStateModel(error = "Something went wrong!"))
+//
+//            delay(2000)
 
             val fetchedArticles = fetchArticles()
             _articlesState.emit(ArticleStateModel(articles = fetchedArticles))
         }
     }
 
-    private suspend fun fetchArticles() : List<ArticleModel> = mockArticle
+    private suspend fun fetchArticles() : List<ArticleModel> = useCase.getArticles() //mockArticle
 
-    private val mockArticle = listOf(
+    /*private val mockArticle = listOf(
         ArticleModel(
             "Stock market today: Live updates - CNBC",
             "Futures were higher in premarket trading as Wall Street tried to regain its footing.",
@@ -60,5 +80,5 @@ class ArticlesViewModel : BaseViewModel() {
             "2023-11-09",
             "https://cdn.vox-cdn.com/thumbor/Ocz_QcxUdtaexp1pPTMygaqzbR8=/0x0:2000x1333/1200x628/filters:focal(1000x667:1001x668)/cdn.vox-cdn.com/uploads/chorus_asset/file/24396795/DSC04128_processed.jpg",
         ),
-    )
+    )*/
 }
