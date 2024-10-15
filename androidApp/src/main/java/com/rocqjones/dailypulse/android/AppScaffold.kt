@@ -19,14 +19,13 @@ import com.rocqjones.dailypulse.articles.ArticlesViewModel
  * Copyright (c) 2024
  */
 @Composable
-fun AppScaffold(articlesViewModel: ArticlesViewModel) {
+fun AppScaffold() {
     val navController = rememberNavController()
 
     Scaffold {
         AppNavHost(
             navController = navController,
-            modifier = Modifier.fillMaxSize().padding(it),
-            articlesViewModel
+            modifier = Modifier.fillMaxSize().padding(it)
         )
     }
 }
@@ -34,8 +33,7 @@ fun AppScaffold(articlesViewModel: ArticlesViewModel) {
 @Composable
 fun AppNavHost(
     navController: NavHostController,
-    modifier: Modifier = Modifier,
-    articlesViewModel: ArticlesViewModel
+    modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
@@ -44,8 +42,7 @@ fun AppNavHost(
     ) {
         composable(Screens.ARTICLES.route) {
             ArticlesScreen(
-                onAboutButtonClick = { navController.navigate(Screens.ABOUT_DEVICE.route) },
-                articlesViewModel = articlesViewModel
+                onAboutButtonClick = { navController.navigate(Screens.ABOUT_DEVICE.route) }
             )
         }
 
