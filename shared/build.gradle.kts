@@ -73,3 +73,11 @@ android {
         minSdk = 24
     }
 }
+
+sqldelight {
+    databases {
+        create("DailyPulseDatabase") {
+            packageName.set("com.rocqjones.dailypulse.db")
+        }
+    }
+}
