@@ -7,6 +7,7 @@ plugins {
     some of these features by modifying the Xcode Framework produced by the Kotlin compiler.
     */
     kotlin("plugin.serialization") version "1.9.20"
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -38,6 +39,9 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             //implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)
+
+            // sqlDelight
+            implementation(libs.sql.coroutines.extensions)
         }
 
         commonTest.dependencies {
@@ -48,11 +52,16 @@ kotlin {
             // Android dependencies here (only used in androidMain module)
             implementation(libs.androidx.lifecycle.viewmodel.ktx)
             implementation(libs.ktor.client.android)
+
+            // sqlDelight
+            implementation(libs.sql.android.driver)
         }
 
         iosMain.dependencies {
             // iOS dependencies here (only used in iosMain module)
             implementation(libs.ktor.client.darwin)
+            // sqlDelight
+            implementation(libs.sql.native.driver)
         }
     }
 }
