@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.Log
 import kotlin.math.round
 
-actual class Platform() {
+actual class Platform {
     private val myTag = "DailyPulse"
 
     actual val osName: String
