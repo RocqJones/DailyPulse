@@ -7,7 +7,8 @@ import org.koin.core.context.startKoin
 
 fun initKoin() {
     try {
-        val module =  sharedKoinModule // iOS does not have any VM specific module like Android
+        // iOS does not have any VM specific module like Android
+        val module =  sharedKoinModule + databaseModule
 
         startKoin {
             modules(module)

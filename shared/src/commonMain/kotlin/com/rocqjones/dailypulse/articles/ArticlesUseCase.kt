@@ -8,10 +8,10 @@ package com.rocqjones.dailypulse.articles
 //import kotlinx.datetime.todayIn
 import kotlin.math.abs
 
-class ArticlesUseCase(private val articlesService: ArticlesService) {
+class ArticlesUseCase(private val repository: ArticlesRepository) {
 
     suspend fun getArticles() : List<ArticleModel> {
-        val articlesRaw = articlesService.getArticles()
+        val articlesRaw = repository.getArticles()
         return mapArticles(articlesRaw)
     }
 
