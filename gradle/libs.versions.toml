@@ -13,6 +13,7 @@ ktorClient = "2.3.5"
 #kotlinxDatetime = "0.4.1"
 koin = "3.4.3"
 sqlDelight = "2.0.2"
+statelyCommon = "2.1.0"
 
 [libraries]
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
@@ -43,6 +44,9 @@ koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" } # Shar
 sql-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
 sql-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" } # iOS
 sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" } # Android
+stately-common = { module = "co.touchlab:stately-common", version.ref = "statelyCommon" }
+stately-iso-collections = { module = "co.touchlab:stately-iso-collections" }
+stately-isolate = { module = "co.touchlab:stately-isolate", version.ref = "statelyCommon" }
 
 
 [plugins]

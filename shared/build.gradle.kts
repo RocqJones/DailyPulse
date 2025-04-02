@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    id("co.touchlab.skie") version "0.7.2"
+    id("co.touchlab.skie") version "0.8.3"
     /*
     SKIE (pronounced as sky) is a special Kotlin native compiler plugin that brings back support for
     some of these features by modifying the Xcode Framework produced by the Kotlin compiler.
@@ -42,6 +42,8 @@ kotlin {
 
             // sqlDelight
             implementation(libs.sql.coroutines.extensions)
+
+            implementation(libs.stately.common)
         }
 
         commonTest.dependencies {
@@ -62,6 +64,9 @@ kotlin {
             implementation(libs.ktor.client.darwin)
             // sqlDelight
             implementation(libs.sql.native.driver)
+            // stately
+//            runtimeOnly(libs.stately.isolate)
+//            runtimeOnly(libs.stately.iso.collections)
         }
     }
 }
