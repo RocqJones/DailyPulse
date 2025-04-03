@@ -43,7 +43,7 @@ kotlin {
             // sqlDelight
             implementation(libs.sql.coroutines.extensions)
 
-            implementation(libs.stately.common)
+            //implementation(libs.stately.common)
         }
 
         commonTest.dependencies {
@@ -64,9 +64,6 @@ kotlin {
             implementation(libs.ktor.client.darwin)
             // sqlDelight
             implementation(libs.sql.native.driver)
-            // stately
-//            runtimeOnly(libs.stately.isolate)
-//            runtimeOnly(libs.stately.iso.collections)
         }
     }
 }
