@@ -1,6 +1,7 @@
 package com.rocqjones.dailypulse.articles
 
 import com.rocqjones.dailypulse.BaseViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -19,9 +20,16 @@ class ArticlesViewModel(
         getArticles()
     }
 
-    private fun getArticles() {
+    fun getArticles(forceFetch : Boolean = false) {
         scope.launch {
-            val fetchedArticles = useCase.getArticles()
+            _articlesState.emit(
+                ArticleStateModel(
+                    loading = true,
+                    articles = _articlesState.value.articles
+                )
+            )
+
+            val fetchedArticles = useCase.getArticles(forceFetch = forceFetch)
             _articlesState.emit(ArticleStateModel(articles = fetchedArticles))
         }
     }

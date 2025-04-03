@@ -1,20 +1,17 @@
 package com.rocqjones.dailypulse.di
 
+import com.rocqjones.dailypulse.articles.ArticlesDataSource
 import com.rocqjones.dailypulse.articles.ArticlesViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 
 fun initKoin() {
-    try {
-        // iOS does not have any VM specific module like Android
-        val module =  sharedKoinModule + databaseModule
+    // iOS does not have any VM specific module like Android
+    val module =  sharedKoinModule + databaseModule
 
-        startKoin {
-            modules(module)
-        }
-    } catch (e: Exception) {
-        println("initKoin: ${e.message}")
+    startKoin {
+        modules(module)
     }
 }
 
@@ -26,3 +23,8 @@ class ArticlesInjector : KoinComponent {
     // Inject ArticlesViewModel
     val articlesViewModel: ArticlesViewModel by inject()
 }
+
+/*
+class SourcesInjector : KoinComponent {
+    val sourcesViewModel: SourcesViewModel by inject()
+}*/

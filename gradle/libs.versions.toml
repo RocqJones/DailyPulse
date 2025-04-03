@@ -14,6 +14,7 @@ ktorClient = "2.3.5"
 koin = "3.4.3"
 sqlDelight = "2.0.2"
 statelyCommon = "2.1.0"
+accompanistSwipeRefresh = "0.24.13-rc"
 
 [libraries]
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
@@ -48,6 +49,8 @@ stately-common = { module = "co.touchlab:stately-common", version.ref = "stately
 stately-iso-collections = { module = "co.touchlab:stately-iso-collections" }
 stately-isolate = { module = "co.touchlab:stately-isolate", version.ref = "statelyCommon" }
 
+# pull-refresh
+accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwipeRefresh" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

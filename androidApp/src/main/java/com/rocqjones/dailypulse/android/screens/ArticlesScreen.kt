@@ -31,6 +31,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.rocqjones.dailypulse.android.R
 import com.rocqjones.dailypulse.articles.ArticleModel
 import com.rocqjones.dailypulse.articles.ArticlesViewModel
@@ -46,14 +48,14 @@ fun ArticlesScreen(
     Column {
         AppBar(onAboutButtonClick)
 
-        if (articleState.value.loading)
-            Loader()
+        /*if (articleState.value.loading)
+            Loader()*/
 
         if (articleState.value.error != null)
             ErrorMessage(articleState.value.error)
 
         if (articleState.value.articles.isNotEmpty())
-            ArticlesListView(articlesViewModel.articlesState.value.articles)
+            ArticlesListView(articlesViewModel)
     }
 }
 
@@ -75,10 +77,16 @@ private fun AppBar(onAboutButtonClick: () -> Unit) {
 }
 
 @Composable
-fun ArticlesListView(articles: List<ArticleModel>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(articles) { article ->
-            ArticleItemView(article = article)
+fun ArticlesListView(articlesViewModel: ArticlesViewModel) {
+    val state = articlesViewModel.articlesState.collectAsState().value
+    SwipeRefresh(
+        state = SwipeRefreshState(state.loading),
+        onRefresh = { articlesViewModel.getArticles(forceFetch = true) }
+    ) {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(state.articles) { article ->
+                ArticleItemView(article = article)
+            }
         }
     }
 }
@@ -91,6 +99,9 @@ fun ArticleItemView(article: ArticleModel) {
             .padding(16.dp)
     ) {
         AsyncImage(
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth(),
             model = article.imageUrl,
             contentDescription = null
         )

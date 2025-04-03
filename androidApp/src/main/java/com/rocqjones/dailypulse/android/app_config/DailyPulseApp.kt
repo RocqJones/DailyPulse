@@ -33,5 +33,4 @@ class DailyPulseApp : Application() {
             Log.e(TAG, "initKoin: ${e.message}")
         }
     }
-
 }

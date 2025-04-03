@@ -55,4 +55,7 @@ dependencies {
     // DI
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+
+    // pull refresh
+    implementation(libs.accompanist.swiperefresh)
 }
