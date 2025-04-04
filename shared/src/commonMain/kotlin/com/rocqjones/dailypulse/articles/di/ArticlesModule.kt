@@ -1,10 +1,10 @@
 package com.rocqjones.dailypulse.articles.di
 
-import com.rocqjones.dailypulse.articles.ArticlesDataSource
-import com.rocqjones.dailypulse.articles.ArticlesRepository
-import com.rocqjones.dailypulse.articles.ArticlesService
-import com.rocqjones.dailypulse.articles.ArticlesUseCase
-import com.rocqjones.dailypulse.articles.ArticlesViewModel
+import com.rocqjones.dailypulse.articles.data.ArticlesDataSource
+import com.rocqjones.dailypulse.articles.data.ArticlesRepository
+import com.rocqjones.dailypulse.articles.data.ArticlesService
+import com.rocqjones.dailypulse.articles.application.ArticlesUseCase
+import com.rocqjones.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.dsl.module
 
 /**

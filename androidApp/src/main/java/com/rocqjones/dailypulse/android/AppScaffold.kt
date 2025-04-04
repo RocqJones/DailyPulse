@@ -12,7 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.rocqjones.dailypulse.android.enums.Screens
 import com.rocqjones.dailypulse.android.screens.AboutScreen
 import com.rocqjones.dailypulse.android.screens.ArticlesScreen
-import com.rocqjones.dailypulse.articles.ArticlesViewModel
+import com.rocqjones.dailypulse.articles.presentation.ArticlesViewModel
 
 /**
  * Created by JonesMbindyo on 17/05/2024.

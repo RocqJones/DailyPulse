@@ -1,4 +1,4 @@
-package com.rocqjones.dailypulse.articles
+package com.rocqjones.dailypulse.articles.data
 
 data class ArticleModel(
     val title: String,

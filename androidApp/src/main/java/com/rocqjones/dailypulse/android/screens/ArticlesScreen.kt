@@ -34,8 +34,8 @@ import coil.compose.AsyncImage
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.rocqjones.dailypulse.android.R
-import com.rocqjones.dailypulse.articles.ArticleModel
-import com.rocqjones.dailypulse.articles.ArticlesViewModel
+import com.rocqjones.dailypulse.articles.data.ArticleModel
+import com.rocqjones.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable

@@ -1,4 +1,4 @@
-package com.rocqjones.dailypulse.articles
+package com.rocqjones.dailypulse.articles.data
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

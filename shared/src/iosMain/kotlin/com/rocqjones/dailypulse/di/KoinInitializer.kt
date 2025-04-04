@@ -1,7 +1,7 @@
 package com.rocqjones.dailypulse.di
 
-import com.rocqjones.dailypulse.articles.ArticlesDataSource
-import com.rocqjones.dailypulse.articles.ArticlesViewModel
+import com.rocqjones.dailypulse.articles.data.ArticlesDataSource
+import com.rocqjones.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
