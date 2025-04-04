@@ -2,18 +2,19 @@
 agp = "8.1.4"
 coilCompose = "2.6.0"
 kotlin = "1.9.23"
-compose = "1.7.4"
+compose = "1.7.8"
 compose-compiler = "1.5.11"
-compose-material3 = "1.3.0"
-androidx-activityCompose = "1.9.3"
+compose-material3 = "1.3.1"
+androidx-activityCompose = "1.10.1"
 kotlinxCoroutinesCore = "1.8.0"
-lifecycleViewmodelKtx = "2.8.6"
-navigationCompose = "2.8.3"
+lifecycleViewmodelKtx = "2.8.7"
+navigationCompose = "2.8.9"
 ktorClient = "2.3.5"
 #kotlinxDatetime = "0.4.1"
 koin = "3.4.3"
 sqlDelight = "2.0.2"
 accompanistSwipeRefresh = "0.24.13-rc"
+statelyCommon = "2.1.0"
 
 [libraries]
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
@@ -47,6 +48,7 @@ sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.re
 
 # pull-refresh
 accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwipeRefresh" }
+stately-common = { module = "co.touchlab:stately-common", version.ref = "statelyCommon" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

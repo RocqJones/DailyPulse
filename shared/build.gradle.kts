@@ -11,6 +11,7 @@ plugins {
 }
 
 kotlin {
+    targetHierarchy.default()
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -27,6 +28,7 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
+            linkerOpts("-lsqlite3") // This links SQLite: ensures the iOS build includes SQLite functions.
         }
     }
 
@@ -43,7 +45,8 @@ kotlin {
             // sqlDelight
             implementation(libs.sql.coroutines.extensions)
 
-            //implementation(libs.stately.common)
+            // stately-common
+            implementation(libs.stately.common)
         }
 
         commonTest.dependencies {
@@ -70,7 +73,7 @@ kotlin {
 
 android {
     namespace = "com.rocqjones.dailypulse"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }
