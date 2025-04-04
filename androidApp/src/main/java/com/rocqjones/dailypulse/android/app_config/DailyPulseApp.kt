@@ -2,6 +2,7 @@ package com.rocqjones.dailypulse.android.app_config
 
 import android.app.Application
 import android.util.Log
+import com.rocqjones.dailypulse.android.di.databaseModule
 import com.rocqjones.dailypulse.android.di.viewModelsModule
 import com.rocqjones.dailypulse.di.sharedKoinModule
 import org.koin.android.ext.koin.androidContext
@@ -22,7 +23,7 @@ class DailyPulseApp : Application() {
 
     private fun initKoin() {
         try {
-            val module =  sharedKoinModule + viewModelsModule
+            val module =  sharedKoinModule + viewModelsModule + databaseModule
 
             startKoin {
                 androidContext(this@DailyPulseApp)
@@ -32,5 +33,4 @@ class DailyPulseApp : Application() {
             Log.e(TAG, "initKoin: ${e.message}")
         }
     }
-
 }

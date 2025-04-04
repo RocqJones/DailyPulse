@@ -1,5 +1,7 @@
 package com.rocqjones.dailypulse.articles.di
 
+import com.rocqjones.dailypulse.articles.ArticlesDataSource
+import com.rocqjones.dailypulse.articles.ArticlesRepository
 import com.rocqjones.dailypulse.articles.ArticlesService
 import com.rocqjones.dailypulse.articles.ArticlesUseCase
 import com.rocqjones.dailypulse.articles.ArticlesViewModel
@@ -20,4 +22,6 @@ val articlesModule = module {
     single<ArticlesService> { ArticlesService(get()) }
     single<ArticlesUseCase> { ArticlesUseCase(get()) }
     single<ArticlesViewModel> { ArticlesViewModel(get()) }
+    single<ArticlesDataSource> { ArticlesDataSource(get()) }
+    single<ArticlesRepository> { ArticlesRepository(get(), get()) }
 }
