@@ -1,4 +1,6 @@
-package com.rocqjones.dailypulse.articles
+package com.rocqjones.dailypulse.articles.data
+
+import com.rocqjones.dailypulse.articles.data.ArticlesService
 
 class ArticlesRepository(
     private val dataSource: ArticlesDataSource,

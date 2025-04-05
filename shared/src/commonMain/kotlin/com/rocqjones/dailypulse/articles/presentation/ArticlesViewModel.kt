@@ -1,6 +1,7 @@
-package com.rocqjones.dailypulse.articles
+package com.rocqjones.dailypulse.articles.presentation
 
 import com.rocqjones.dailypulse.BaseViewModel
+import com.rocqjones.dailypulse.articles.application.ArticlesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

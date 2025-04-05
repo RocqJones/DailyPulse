@@ -1,4 +1,4 @@
-package com.rocqjones.dailypulse.articles
+package com.rocqjones.dailypulse.articles.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

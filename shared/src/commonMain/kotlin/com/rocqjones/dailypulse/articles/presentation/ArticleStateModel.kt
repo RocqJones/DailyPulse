@@ -1,4 +1,6 @@
-package com.rocqjones.dailypulse.articles
+package com.rocqjones.dailypulse.articles.presentation
+
+import com.rocqjones.dailypulse.articles.data.ArticleModel
 
 data class ArticleStateModel(
     val articles: List<ArticleModel> = listOf(),
